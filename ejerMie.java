@@ -32,6 +32,8 @@ public class ejerMie {
         Random numA;//variable tipo ramdon
         int sumDP;
         int sumDS;
+        int k;
+        String cad1;
         
         //titulo
         System.out.println("EJERCICIO");
@@ -48,6 +50,8 @@ public class ejerMie {
         numA = new Random();
         sumDP = 0;
         sumDS = 0;
+        k = 0;
+        cad1 = "";
         
         //salto de linea
         System.out.println("---------------------------------");
@@ -83,7 +87,35 @@ public class ejerMie {
         }
         
         //imprimimos las sumas diagonales
+        System.out.println("1.CUENTO SUMA LA DIAGONAL PRINCIPAL Y "
+                + "LA SECUNDARIA:");
         System.out.println("La suma de la diagonal principal es:"+sumDP);
         System.out.println("La suma de la diagonal principal es:"+sumDS);
+        
+        //extremos
+        if (k == 0) {
+            for (int i = 0; i < dime; i++) {
+                cad1 = cad1 + mat[k][i] + "\t";
+            }
+            k++;
+            cad1 = cad1 + "\n";
+        }
+
+        if (k >= 1 && k <= dime - 1) {
+            for (int i = 1; i < dime - 1; i++) {
+                cad1 = cad1 + mat[i][0] + "" + mat[i][dime - 1] + "\n";
+                k++;
+            }
+        }
+        
+        for (int i = 0; i < dime; i++) {
+            cad1 = cad1 + mat[dime - 1][i];
+        }
+        
+        //linea
+        System.out.println("---------------------------------");
+        
+        System.out.println("2.MOSTRAR LOS DATOS DE LOS EXTREMOS SIN REPETIRLOS:");
+        System.out.println(cad1);
     }
 }
