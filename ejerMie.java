@@ -14,8 +14,7 @@ import java.util.Scanner;
 //2.mostrar los datos de los extremos sin repetirlos
 //3.mostrar los datos que forman la m y la w si la matrix es impar
 //4.llenar otra matriz de igual tamano y obtener la suma de las dos matrices y
-//obtener la matriz inversa de esta
-//mostrar el dato que mas repite por fila
+//obtener la matriz inversa de esta y mostrar el dato que mas repite por fila
 
 /**
  *
@@ -30,8 +29,8 @@ public class ejerMie {
         int [][] mat;
         int dime;//variable dimension mxm=dimexdime
         Random numA;//variable tipo ramdon
-        int sumDP;
-        int sumDS;
+        int sumDP;//variable suma diagonal principal
+        int sumDS;//variable suma diagonal secundaria
         int k;
         String cad1;
         
@@ -52,6 +51,7 @@ public class ejerMie {
         sumDS = 0;
         k = 0;
         cad1 = "";
+        int [] w1;
         
         //salto de linea
         System.out.println("---------------------------------");
@@ -117,5 +117,77 @@ public class ejerMie {
         
         System.out.println("2.MOSTRAR LOS DATOS DE LOS EXTREMOS SIN REPETIRLOS:");
         System.out.println(cad1);
+        
+        //linea
+        System.out.println("---------------------------------");
+        
+        //matriz impar mostrar m y w 
+        System.out.println("3.MOSTRAR LOS DATOS QUE FORMAN LA M Y"
+                + " LA W SI LA MATRIZ ES IMPAR");
+        if (dime % 2 != 0) {//si es impar
+            int mitDia = (dime - 1)/ 2;
+            //Elementos que forman la M
+            System.out.println("Los elementos que forman la M son:");
+            for (int i = 0; i < dime; i++) {
+                System.out.println(mat[i][0] + "");
+            }
+            
+            //linea
+            System.out.println();
+
+            for (int i = 0; i < dime; i++) {
+                System.out.println(mat[i][dime - 1] + " ");
+            }
+            
+            //linea
+            System.out.println();
+
+            for (int i = mitDia; i > 0; i--) {
+                System.out.println(mat[i][i]);
+            }
+            
+            //linea
+            System.out.println();
+            
+            for (int i = mitDia; i > 0; i--) {
+                System.out.println(mat[i][dime - 2] + " ");
+            }
+            
+            //linea
+            System.out.println("---------------------------------");
+            
+            //elementos que forman la W
+            System.out.println("Los elementos que forman la W:");
+            for (int i = (dime - 1); i >= 0; i--) {
+                System.out.println(mat[i][0]);
+            }
+            
+            //linea
+            System.out.println();
+            
+            for (int i = (dime - 1); i >= 0; i--) {
+                System.out.println(mat[i][dime - 1]);//
+            }
+            
+            //linea
+            System.out.println();
+            
+            String cad2 = "";
+            int j = 1;
+            
+            for (int i = dime - 2; i >= dime / 2; i--) {
+                System.out.println(mat[i][i]);
+                
+                if (i != dime / 2) {
+                    cad2 = cad2 + mat[i][j];
+                    j++;
+                }
+            }
+            
+            System.out.println(cad2);
+
+        }else{
+            System.out.println("Matriz par");
+        }
     }
 }
